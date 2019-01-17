@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+
+    
+
+
+
+}
+
+<div class="jumbotron">
+    <h1>Telist</h1>
+    <p class="lead">Wszystkie urządzenia mobilne w jednym miejscu!</p>
+
+
+
+    <div class="row">
+        <div class="col-md-3 " style="margin:10px; background:white;">
+            <h2>Samsung</h2>
+            <p>@Html.ActionLink("Pokaż listę >>", "Index", "Phones", new { id = 1 } , htmlAttributes: new { @class = "btn btn-default" })</p>
+        </div>
+        <div class="col-md-3 " style="margin:10px; background:white;">
+            <h2>Apple</h2>
+            <p>@Html.ActionLink("Pokaż listę >>", "Index", "Phones", new { id = 2 } , htmlAttributes: new { @class = "btn btn-default" })</p>
+        </div>
+        <div class="col-md-3 " style="margin:10px; background:white;">
+            <h2>Sony</h2>
+            <p>@Html.ActionLink("Pokaż listę >>", "Index", "Phones", new { id = 3 } , htmlAttributes: new { @class = "btn btn-default" })</p>
+        </div>
+    </div>
+    <br />
+    <p>@Html.ActionLink("Pokaż wszystkich producentów", "Index", "Brands", null, htmlAttributes: new { @class = "btn btn-default" })</p>
+    <p>@Html.ActionLink("Pokaż wszystkie modele", "Index", "Phones", null, htmlAttributes: new { @class = "btn btn-default" })</p>
+</div>

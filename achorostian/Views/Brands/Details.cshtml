@@ -1,0 +1,32 @@
+﻿@model achorostian.Models.Brand
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Szczegóły";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>@Html.DisplayNameFor(model => model.Name)</dt>
+        <dd>@Html.DisplayFor(model => model.Name)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Year)</dt>
+        <dd>@Html.DisplayFor(model => model.Year)</dd>
+
+        <dt>Liczba urządzeń</dt>
+        <dd>@Model.Phones.Count()</dd>
+
+    </dl>
+</div>
+<p>
+    @if (Request.IsAuthenticated)
+    {
+        @Html.ActionLink("Edytuj", "Edit", new { id = Model.Id })
+        <br/>
+    }
+    @Html.ActionLink(" Wróć do listy", "Index")
+</p>

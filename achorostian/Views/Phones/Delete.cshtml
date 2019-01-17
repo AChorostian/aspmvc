@@ -1,0 +1,43 @@
+﻿@model achorostian.Models.Phone
+@using Microsoft.AspNet.Identity
+
+@if (Request.IsAuthenticated)
+{
+    ViewBag.Title = "Usuń urządzenie";
+    <h2>@ViewBag.Title</h2>
+    <h3>Czy na pewno chcesz usunąć to urządzenie z listy?</h3>
+}
+    <div>
+        <hr />
+        @if (Request.IsAuthenticated)
+        {
+            <dl class="dl-horizontal">
+
+                <dt>@Html.DisplayNameFor(model => model.Brand)</dt>
+                <dd>@Html.DisplayFor(model => model.Brand.Name)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.Model)</dt>
+                <dd>@Html.DisplayFor(model => model.Model)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.Year)</dt>
+                <dd>@Html.DisplayFor(model => model.Year)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.Price)</dt>
+                <dd>@Html.DisplayFor(model => model.Price)</dd>
+
+            </dl>
+        }
+            @using (Html.BeginForm())
+            {
+                if (Request.IsAuthenticated)
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Usuń" class="btn btn-default" /><br /><br />
+                        @Html.ActionLink("Wróć do listy", "Index")
+                    </div>
+                }
+            }
+        
+    </div>

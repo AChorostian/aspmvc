@@ -1,0 +1,58 @@
+﻿@model IEnumerable<achorostian.Models.Brand>
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Lista wszystkich producentów";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+
+@if (Request.IsAuthenticated)
+{
+    <p>
+        @Html.ActionLink("Dodaj nowy", "Create" )
+    </p>
+}
+    <table class="table">
+        <tr>
+            <th width="25%">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th width="25%">
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th width="25%">
+                Liczba urządzeń w bazie
+            </th>
+            <th width="25%">Akcje</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+
+            var countphones = item.Phones.Count();
+
+            <tr>
+                <td>
+                    @Html.ActionLink(item.Name, "Index", "Phones", new { id = item.Id }, null)
+                </td>
+                <td>
+                    @item.Year
+                </td>
+                <td>
+                    @countphones
+                </td>
+                <td>
+                    @Html.ActionLink("Szczegóły", "Details", new { id = item.Id })
+                    @if (Request.IsAuthenticated)
+                    {
+                        @Html.ActionLink(" Edytuj", "Edit", new { id = item.Id })
+                        @Html.ActionLink(" Usuń", "Delete", new { id = item.Id })
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
